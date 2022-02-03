@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -12,7 +13,7 @@ df_test = pd.read_csv('https://storage.googleapis.com/dqlab-dataset/challenge/fe
 df_all = concat_df(df_train, df_test)
 df_train.name = 'Training Set'
 df_test.name = 'Test Set'
-df_all.name = 'All Set' 
+df_all.name = 'All Set'
 dfs = [df_train, df_test]
 
 age_by_pclass_sex = df_all.groupby(['Sex', 'Pclass']).median()['Age']
@@ -38,12 +39,12 @@ axs[0].tick_params(axis='x', labelsize=10)
 axs[1].tick_params(axis='x', labelsize=15)
 
 for i in range(2):
-	axs[i].tick_params(axis='y', labelsize=15)
+    axs[i].tick_params(axis='y', labelsize=15)
 
 axs[0].set_title('Title Feature Value Counts', size=20, y=1.05)
 
 df_all['Title'] = df_all['Title'].replace(['Miss', 'Mrs','Ms', 'Mlle', 'Lady', 'Mme', 'the Countess', 'Dona'], 'Miss/Mrs/Ms')
-df_all['Title'] = df_all['Title'].replace(['Dr', 'Col', 'Major', 'Johkheer', 'Capt', 'Sir', 'Don', 'Rev'], 'Dr/Military/Noble/Clergy')
+df_all['Title'] = df_all['Title'].replace(['Dr', 'Col', 'Major', 'Jonkheer', 'Capt', 'Sir', 'Don', 'Rev'], 'Dr/Military/Noble/Clergy')
 
 sns.barplot(x=df_all['Title'].value_counts().index, y=df_all['Title'].value_counts().values, ax=axs[1])
 axs[1].set_title('Title Feature Value Counts After Grouping', size=20, y=1.05)
